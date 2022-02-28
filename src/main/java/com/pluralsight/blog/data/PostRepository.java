@@ -17,4 +17,9 @@ public interface PostRepository extends JpaRepository<Post,Long> {
         return findAll().stream().filter(c -> c.getTitle().contains(title))
                 .collect(Collectors.toList());
     }
+
+    default List<Post> findByAuthor_Lastname(final String lastname) {
+        return findAll().stream().filter(c -> c.getAuthor().getLastname().contains(lastname))
+                .collect(Collectors.toList());
+    }
 }
